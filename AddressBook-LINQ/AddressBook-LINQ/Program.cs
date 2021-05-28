@@ -16,7 +16,8 @@ namespace AddressBook_LINQ
             //Creating Data Base
             DataTable table = new DataTable();
             book.Columns(table); //Passing Data base As parameter
-
+            book.InsertRows(table);
+            book.Display(table);
 
             Console.ReadLine();
         }
@@ -68,6 +69,39 @@ namespace AddressBook_LINQ
             table.Columns.Add(column);
 
             return true;
+        }
+
+        //Adding rows to the DB
+        public void InsertRows(DataTable table)
+        {
+            table.Rows.Add("Kim", "Kardashian", "Street 1", "Lakers", "Los Angeles", 444556, 6785674567, "lb@gmail.com");
+            table.Rows.Add("Kylie", "Jenner", "Street 3", "Celtics", "Boston", 345267, 2345678987, "kylie@gmail.com");
+            table.Rows.Add("Kris", "Jenner", "Block 4", "Warriors", "Golden State", 987654, 3456787654, "kris@gmail.com");
+            table.Rows.Add("Khloe", "Lamar", "Street 5", "Rockets", "Houston", 234566, 6543456789, "khloe@gmail.com");
+            table.Rows.Add("Kourtney", "Scott", "Block 2", "Hornets ", "Charlotte ", 444556, 3456787654, "ks@gmail.com");
+        }
+
+        public void Display(DataTable table)
+        {
+            var dataRow = table.AsEnumerable().Select(x => new { 
+                firstName = x.Field<string>("firstName"),
+                lastname = x.Field<string>("lastname"),
+                address = x.Field<string>("address"),
+                city = x.Field<string>("city"),
+                state = x.Field<string>("state"),
+                zip = x.Field<int>("zip"),
+                phoneNumber = x.Field<double>("phoneNumber"),
+                eMail = x.Field<string>("eMail")
+            });
+
+            Console.WriteLine("FirstName\t lastName \t Address \t City \t State \t Zip \t PhNumber \t Email");
+
+            foreach (var data in dataRow)
+            {
+                Console.Write(data.firstName+"\t\t"+data.lastname+"\t\t"+data.address+"\t"+data.city+"\t"
+                    +data.state+"\t"+data.zip+"\t"+data.phoneNumber+"\t"+data.eMail);
+                Console.WriteLine();
+            }
         }
     }
 }
