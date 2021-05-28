@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using AddressBook_LINQ;
 
 namespace AddressBookTest
 {
@@ -7,8 +8,10 @@ namespace AddressBookTest
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ADDColumns()
         {
+            Program p = new Program();
+            
         }
     }
 }
