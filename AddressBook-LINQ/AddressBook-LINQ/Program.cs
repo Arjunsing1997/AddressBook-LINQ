@@ -16,8 +16,11 @@ namespace AddressBook_LINQ
             //Creating Data Base
             DataTable table = new DataTable();
             book.Columns(table); //Passing Data base As parameter
-            book.InsertRows(table);
-            book.Display(table);
+            book.InsertRows(table); //Calling Insertion Method
+            book.Display(table);    //To Display the Data Base
+
+            AddressBookManagement management = new AddressBookManagement();
+            management.UpdateInfo(table);
 
             Console.ReadLine();
         }
@@ -93,6 +96,8 @@ namespace AddressBook_LINQ
                 phoneNumber = x.Field<double>("phoneNumber"),
                 eMail = x.Field<string>("eMail")
             });
+
+            Console.WriteLine("======================================");
 
             Console.WriteLine("FirstName\t lastName \t Address \t City \t State \t Zip \t PhNumber \t Email");
 
