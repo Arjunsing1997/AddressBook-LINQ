@@ -22,6 +22,8 @@ namespace AddressBook_LINQ
             AddressBookManagement management = new AddressBookManagement();
             management.UpdateInfo(table);
 
+            management.DeletePerson(table);
+
             Console.ReadLine();
         }
 

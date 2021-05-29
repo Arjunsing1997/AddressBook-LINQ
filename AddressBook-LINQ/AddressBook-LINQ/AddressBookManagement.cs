@@ -16,5 +16,11 @@ namespace AddressBook_LINQ
             records["state"] = "Bango";
             book.Display(table);
         }
+
+        public void DeletePerson(DataTable table)
+        {
+            DataTable dataTableupdated = table.AsEnumerable().Except(table.AsEnumerable().Where(r => r.Field<string>("firstName") == "Khloe" && r.Field<string>("lastName") == "Lamar")).CopyToDataTable();
+            book.Display(dataTableupdated);
+        }
     }
 }
