@@ -17,12 +17,31 @@ namespace AddressBook_LINQ
             DataTable table = new DataTable();
             book.Columns(table); //Passing Data base As parameter
             book.InsertRows(table); //Calling Insertion Method
-            book.Display(table);    //To Display the Data Base
 
             AddressBookManagement management = new AddressBookManagement();
-            management.UpdateInfo(table);
+            Console.WriteLine("1)Display\n 2)Update \n3)Delete \n 4)Search by CityORState");
+            Console.WriteLine("Enter Your Choice: ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            
+            switch(choice)
+            {
+                case 1:
+                    book.Display(table);    //To Display the Data Base
+                    break;
+                case 2:
+                    management.UpdateInfo(table);
+                    break;
+                case 3:
+                    management.DeletePerson(table);
+                    break;
+                case 4:
+                    management.CityOrState(table);
+                    break;
+                default:
+                    Console.WriteLine("Invalid Choice");
+                    break;
 
-            management.DeletePerson(table);
+            }
 
             Console.ReadLine();
         }
