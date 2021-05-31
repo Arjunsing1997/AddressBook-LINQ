@@ -41,5 +41,26 @@ namespace AddressBook_LINQ
                 Console.WriteLine("***************");
             }
         }
+
+        public void Count_By_City_Or_State(DataTable table)
+        {
+            //getting count for particular state or city
+            var countOfCityState = table.AsEnumerable().Where(r => r.Field<string>("city") == "Lakers" && r.Field<string>("state") == "Los Angeles").Count();
+
+            //grouping data by city and state
+            var recordedData = from data in table.AsEnumerable()
+                               group data by new { city = data.Field<string>("city"), state = data.Field<string>("state") } into g
+                               select new { city = g.Key.city, state =g.Key.state , count = g.Count() };
+            //displaying data for particular city or state
+            Console.WriteLine("Count of City or State: "+countOfCityState);
+            //displaying total grouped data
+            foreach (var data in recordedData)
+            {
+                Console.WriteLine("city:- " + data.city);
+                Console.WriteLine("state:- " + data.state);
+                Console.WriteLine("Count:- " + data.count);
+                Console.WriteLine("*******************");
+            }
+        }
     }
 }

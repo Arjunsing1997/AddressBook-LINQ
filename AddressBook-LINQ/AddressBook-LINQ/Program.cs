@@ -19,7 +19,7 @@ namespace AddressBook_LINQ
             book.InsertRows(table); //Calling Insertion Method
 
             AddressBookManagement management = new AddressBookManagement();
-            Console.WriteLine("1)Display\n 2)Update \n3)Delete \n 4)Search by CityORState");
+            Console.WriteLine("1)Display\n2)Update \n3)Delete \n4)Search by CityORState\n5)Count By City or State");
             Console.WriteLine("Enter Your Choice: ");
             int choice = Convert.ToInt32(Console.ReadLine());
             
@@ -36,6 +36,9 @@ namespace AddressBook_LINQ
                     break;
                 case 4:
                     management.CityOrState(table);
+                    break;
+                case 5:
+                    management.Count_By_City_Or_State(table);
                     break;
                 default:
                     Console.WriteLine("Invalid Choice");
@@ -102,7 +105,7 @@ namespace AddressBook_LINQ
             table.Rows.Add("Kylie", "Jenner", "Street 3", "Celtics", "Boston", 345267, 2345678987, "kylie@gmail.com");
             table.Rows.Add("Kris", "Jenner", "Block 4", "Warriors", "Golden State", 987654, 3456787654, "kris@gmail.com");
             table.Rows.Add("Khloe", "Lamar", "Street 5", "Rockets", "Houston", 234566, 6543456789, "khloe@gmail.com");
-            table.Rows.Add("Kourtney", "Scott", "Block 2", "Hornets ", "Charlotte ", 444556, 3456787654, "ks@gmail.com");
+            table.Rows.Add("Kourtney", "Scott", "Block 2", "Lakers ", "Los Angeles ", 444556, 3456787654, "ks@gmail.com");
         }
 
         public void Display(DataTable table)
